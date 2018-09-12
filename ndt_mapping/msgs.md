@@ -3,7 +3,7 @@ Node [/points_map_loader]
 Publications: 
  * /pmap_stat [std_msgs/Bool]
  * /rosout [rosgraph_msgs/Log]
- * /points_map [sensor_msgs/PointCloud2]
+ * /points_map [sensor_msgs/PointCloud2]	// This is the map data which displays on Rviz.
 
 Subscriptions: None
 
@@ -28,14 +28,16 @@ Connections:
     * direction: outbound
     * transport: TCPROS
 
-//=========== sensor_msgs/PointCloud2 =========//
-{/points_map & /points_raw}
+//=========== sensor_msgs/PointCloud2 ==========//
+
+{/points_map & /points_raw} // topics which use the msg
+
 std_msgs/Header header
   uint32 seq
   time stamp
   string frame_id
-uint32 height
-uint32 width
+uint32 height		// height of resolution
+uint32 width		// width of resolution
 sensor_msgs/PointField[] fields
   uint8 INT8=1
   uint8 UINT8=2
